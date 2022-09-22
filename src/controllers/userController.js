@@ -8,7 +8,7 @@ const getUserInfo = async (req, res, next) => {
       async (err, result) => {
         if (err) return next(err);
         if (result.length) {
-          return res.send(result);
+          return res.send(result[0]);
         } else {
           return res.status(404).send({ msg: "User not registered" });
         }
@@ -24,7 +24,7 @@ const registerUserInfo = async (req, res, next) => {
     db.query(
       `INSERT INTO user (wallet, hash) VALUES ("${wallet}","${hash}")`,
       async (_err, _result) => {
-        if (err) return next(error);
+        if (_err) return next(_err);
         return res.send(_result);
       }
     );
