@@ -34,7 +34,7 @@ const registerUserInfo = async (req, res, next) => {
 };
 const editUserInfo = async (req, res, next) => {
   try {
-    const { wallet } = req.query;
+    const { hash } = req.query;
     const keys = Object.keys(req.body);
     let condition = [];
     keys.forEach((element) => {
@@ -42,10 +42,16 @@ const editUserInfo = async (req, res, next) => {
     });
     const query = condition.join(",");
     db.query(
-      `UPDATE user SET ${query} WHERE wallet="${wallet}"`,
-      (err, result) => {
+      `UPDATE user SET ${query} WHERE hash="${hash}"`,
+      async (err, result) => {
         if (err) return next(err);
-        return res.send(result);
+        db.query(
+          `SELECT * FROM user WHERE hash = "${hash}"`,
+          (sErr, sResult) => {
+            if (sErr) return next(sErr);
+            return res.send(sResult[0]);
+          }
+        );
       }
     );
   } catch (error) {
