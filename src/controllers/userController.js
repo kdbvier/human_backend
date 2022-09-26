@@ -9,9 +9,8 @@ const getUserInfo = async (req, res, next) => {
         if (err) return next(err);
         if (result.length) {
           return res.send(result[0]);
-        } else {
-          return res.status(404).send({ msg: "User not registered" });
         }
+        return res.status(404).send({ msg: "User not registered" });
       }
     );
   } catch (error) {
