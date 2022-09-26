@@ -19,4 +19,9 @@ router.post(
   "/sale_history/put_sale_history",
   saleHistoryController.putSaleHistory
 );
+router.get("/sale_history/top_seller", saleHistoryController.getTopSeller);
+router.get(
+  "/sale_history/top_collection",
+  saleHistoryController.getTopCollection
+);
 module.exports = router;
