@@ -24,4 +24,8 @@ router.get(
   "/sale_history/top_collection",
   saleHistoryController.getTopCollection
 );
+router.get(
+  "/sale_history/get_sale_history",
+  saleHistoryController.getSaleHistory
+);
 module.exports = router;

@@ -48,4 +48,24 @@ const getTopCollection = async (req, res, next) => {
   }
 };
 
-module.exports = { putSaleHistory, getTopSeller, getTopCollection };
+const getSaleHistory = async (req, res, next) => {
+  try {
+    const { token_id } = req.query;
+    db.query(
+      `SELECT * FROM selling_history WHERE token_id = "${token_id}" ORDER BY time DESC`,
+      (err, result) => {
+        if (err) return next(err);
+        return res.send(result);
+      }
+    );
+  } catch (err) {
+    return next(err);
+  }
+};
+
+module.exports = {
+  putSaleHistory,
+  getTopSeller,
+  getTopCollection,
+  getSaleHistory,
+};
