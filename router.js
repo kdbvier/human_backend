@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("./src/controllers/userController");
 const saleHistoryController = require("./src/controllers/saleHistoryController");
+const nftController = require("./src/controllers/nftController");
 const router = express.Router();
 
 //============================//
@@ -28,4 +29,10 @@ router.get(
   "/sale_history/get_sale_history",
   saleHistoryController.getSaleHistory
 );
+
+//============================//
+//         Nft History        //
+//============================//
+
+router.post("/nfts/register_nft", nftController.registerNft);
 module.exports = router;
