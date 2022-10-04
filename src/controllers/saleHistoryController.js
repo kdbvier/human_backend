@@ -38,6 +38,7 @@ const getTopCollection = async (req, res, next) => {
   try {
     db.query(
       `SELECT *,SUM(amount) FROM selling_history GROUP BY collection ORDER BY SUM(amount) DESC LIMIT 4`,
+      // `SELECT * FROM selling_history`,
       (err, result) => {
         if (err) return next(err);
         return res.send(result);

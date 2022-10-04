@@ -26,4 +26,4 @@ const getNewNfts = async (req, res, next) => {
   }
 };
 
-module.exports = { registerNft };
+module.exports = { registerNft, getNewNfts };

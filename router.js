@@ -35,4 +35,5 @@ router.get(
 //============================//
 
 router.post("/nfts/register_nft", nftController.registerNft);
+router.get("/nfts/get_new_nft", nftController.getNewNfts);
 module.exports = router;
