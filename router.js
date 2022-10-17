@@ -2,6 +2,7 @@ const express = require("express");
 const userController = require("./src/controllers/userController");
 const saleHistoryController = require("./src/controllers/saleHistoryController");
 const nftController = require("./src/controllers/nftController");
+const followController = require("./src/controllers/followingListController");
 const router = express.Router();
 
 //============================//
@@ -40,4 +41,12 @@ router.get(
 
 router.post("/nfts/register_nft", nftController.registerNft);
 router.get("/nfts/get_new_nft", nftController.getNewNfts);
+
+//============================//
+//         Follow List        //
+//============================//
+
+router.post("/follow/register_follow", followController.registerFollow);
+router.get("/follow/get_follow_info", followController.getFollowInfo);
+
 module.exports = router;
