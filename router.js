@@ -29,6 +29,10 @@ router.get(
   "/sale_history/get_sale_history",
   saleHistoryController.getSaleHistory
 );
+router.get(
+  "/sale_history/get_historical_data",
+  saleHistoryController.getHistoricalData
+);
 
 //============================//
 //         Nft History        //

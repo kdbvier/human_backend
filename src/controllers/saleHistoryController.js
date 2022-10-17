@@ -63,10 +63,24 @@ const getSaleHistory = async (req, res, next) => {
     return next(err);
   }
 };
-
+const getHistoricalData = async (req, res, next) => {
+  try {
+    const { skip = 0, limit = 10 } = req.query;
+    db.query(
+      `SELECT * FROM selling_history ORDER BY time DESC LIMIT ${skip},${limit}`,
+      (err, result) => {
+        if (err) return next(err);
+        return res.send(result);
+      }
+    );
+  } catch (err) {
+    return next(err);
+  }
+};
 module.exports = {
   putSaleHistory,
   getTopSeller,
   getTopCollection,
   getSaleHistory,
+  getHistoricalData,
 };
