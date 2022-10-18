@@ -1,0 +1,32 @@
+{
+  "name": "human",
+  "version": "1.0.0",
+  "description": "Human NFT backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node",
+    "mysql",
+    "jwt"
+  ],
+  "engines": {
+    "node": "16.17.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "mysqljs/mysql",
+    "nodemon": "^2.0.20",
+    "validatorjs": "^3.22.1"
+  },
+  "author": "dev",
+  "license": "ISC"
+}
