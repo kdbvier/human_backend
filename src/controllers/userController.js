@@ -22,7 +22,7 @@ const getUsers = async (req, res, next) => {
     db.query(`SELECT * FROM user`, async (err, result) => {
       if (err) return next(err);
       if (result.length) {
-        return res.send(result[0]);
+        return res.send(result);
       }
       return res.status(404).send({ msg: "No Users" });
     });
