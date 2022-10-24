@@ -14,7 +14,7 @@
     "jwt"
   ],
   "engines": {
-    "node": "16.17.0"
+    "node": "14.17.5"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

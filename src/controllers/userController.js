@@ -19,7 +19,6 @@ const getUserInfo = async (req, res, next) => {
 };
 const getUsers = async (req, res, next) => {
   try {
-    const { wallet } = req.query;
     db.query(`SELECT * FROM user`, async (err, result) => {
       if (err) return next(err);
       if (result.length) {
