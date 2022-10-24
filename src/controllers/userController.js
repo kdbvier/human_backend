@@ -17,6 +17,20 @@ const getUserInfo = async (req, res, next) => {
     return next(error);
   }
 };
+const getUsers = async (req, res, next) => {
+  try {
+    const { wallet } = req.query;
+    db.query(`SELECT * FROM user`, async (err, result) => {
+      if (err) return next(err);
+      if (result.length) {
+        return res.send(result[0]);
+      }
+      return res.status(404).send({ msg: "No Users" });
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
 const registerUserInfo = async (req, res, next) => {
   try {
     const { wallet, hash } = req.body;
@@ -58,4 +72,4 @@ const editUserInfo = async (req, res, next) => {
   }
 };
 
-module.exports = { getUserInfo, editUserInfo, registerUserInfo };
+module.exports = { getUserInfo, getUsers, editUserInfo, registerUserInfo };
