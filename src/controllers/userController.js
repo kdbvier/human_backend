@@ -50,9 +50,12 @@ const editUserInfo = async (req, res, next) => {
     const keys = Object.keys(req.body);
     let condition = [];
     keys.forEach((element) => {
-      condition.push(`${element} = "${req.body[element]}"`);
+      if (req.body[element]) {
+        condition.push(`${element} = "${req.body[element]}"`);
+      }
     });
     const query = condition.join(",");
+
     db.query(
       `UPDATE user SET ${query} WHERE hash="${hash}"`,
       async (err, result) => {
