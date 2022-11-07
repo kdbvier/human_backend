@@ -50,8 +50,9 @@ const editUserInfo = async (req, res, next) => {
     const keys = Object.keys(req.body);
     let condition = [];
     keys.forEach((element) => {
-      if (req.body[element]) {
-        condition.push(`${element} = "${req.body[element]}"`);
+      const currentValue = req.body[element];
+      if (currentValue !== null && currentValue !== undefined) {
+        condition.push(`${element} = "${currentValue}"`);
       }
     });
     const query = condition.join(",");
